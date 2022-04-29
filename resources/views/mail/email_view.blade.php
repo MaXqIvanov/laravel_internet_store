@@ -1,0 +1,1 @@
+<a href="https://store.web-liter.ru/api/activate/{{$activationLink}}">ссылка для активации аккаунта</a>

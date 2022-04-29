@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkclient=self.webpackChunkclient||[]).push([[882],{1882:function(n,i,c){c.r(i),c.d(i,{Train:function(){return l},default:function(){return s}});c(2791);var e="Train_main__cS0il",r="Train_crap__h19j5",a=c(184),l=function(){return console.log(void 0),(0,a.jsx)("div",{className:e,children:(0,a.jsx)("div",{className:r,children:"123"})})},s=l}}]);
+//# sourceMappingURL=882.456efbfc.chunk.js.map
