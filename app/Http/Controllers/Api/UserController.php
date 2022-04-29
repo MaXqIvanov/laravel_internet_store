@@ -77,7 +77,8 @@ class UserController extends Controller
             if ($old[0] == "") {
                 $capcha = false;
                 try {
-                    $capcha = Http::post("https://www.google.com/recaptcha/api/siteverify?secret=6LeGQ4IfAAAAAJz0v4gRA63JpIe8mCqgBZ8P1Jfk&response=$token");
+                    $keyCapcha = env('APP_RECAPCHA_SECRET');
+                    $capcha = Http::post("https://www.google.com/recaptcha/api/siteverify?secret=$keyCapcha&response=$token");
                     $capchaNew = $capcha->json();
                     $capcha = $capchaNew['success'];
                 } catch (\Throwable $th) {

@@ -106,7 +106,8 @@ class MessagesController extends Controller
 
             $capcha = false;
             try {
-                $capcha = Http::post("https://www.google.com/recaptcha/api/siteverify?secret=6LeGQ4IfAAAAAJz0v4gRA63JpIe8mCqgBZ8P1Jfk&response=$token");
+                $keyCapcha = env('APP_RECAPCHA_SECRET');
+                $capcha = Http::post("https://www.google.com/recaptcha/api/siteverify?secret=$keyCapcha&response=$token");
                 $capchaNew = $capcha->json();
                 $capcha = $capchaNew['success'];
             } catch (\Throwable $th) {
@@ -114,7 +115,9 @@ class MessagesController extends Controller
             }
             if ($capcha === true) {
                 $newMessage = rawurlencode($messageTeleg);
-                $telegram = Http::post("https://api.telegram.org/bot5060229836:AAEaHIgNQv9tY4skvJU7KH1ifu95t4yglMk/sendMessage?chat_id=-602739820&parse_mode=html&text=$newMessage");
+                $keyTelegram = env('APP_TELEGRAM_KEY');
+                $keyIdRoomTeleg = env('APP_TELEGRAM_KEYROOM');
+                $telegram = Http::post("https://api.telegram.org/bot$keyTelegram/sendMessage?chat_id=$keyIdRoomTeleg&parse_mode=html&text=$newMessage");
 
                 return response()->json(["message" => "Спасибо за вашу помощь"]);
             } else return response()->json(["message" => "К сожалению отправить сообщение не получилось"]);
